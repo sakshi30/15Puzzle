@@ -1,0 +1,40 @@
+<div class="container">
+	<p *ngIf="errMess" class="error"><b>{{errMess}}</b></p>
+</div>
+<div class="container">
+	<br/>
+	<div id="info-box">
+		<div id="scorepoint">
+			<span class="text">Moves</span>
+			<span class="num">{{moves}}</span>
+		</div>
+		<br/><br/>
+		<div id="timepoint">
+			<span class="text">Time</span>
+			<span class="num">{{time}}</span>
+		</div>
+	</div>
+	<table class="play-box">
+	<div class="grid">
+		<div class="tiles-container">
+			<tr class="tile" *ngFor="let number of first" (click)="swapEntry(number)" tabindex="1">
+				{{number}}
+			</tr>
+			<tr class="tile" *ngFor="let number of second" (click)="swapEntry(number)" tabindex="2">	
+				{{number}}		
+			</tr>
+			<tr class="tile" *ngFor="let number of third" (click)="swapEntry(number)" tabindex="3">
+				{{number}}
+			</tr>
+			<tr class="tile" *ngFor="let number of fourth" (click)="swapEntry(number)" tabindex="4">	
+				{{number}}		
+			</tr>
+		</div>
+	</div>
+</table>
+<div id="info-box">
+		<div id="buttonpoint">
+			<button mat-button (click)="goToScorePage()">Submit<span>&nbsp;&nbsp;</span><span class="fa fa-hand-o-right fa-lg"></span></button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="box">
+	<h1 class="header"><b>Our Top Players</b></h1>
+	<hr/>
+	<div class="container">
+		<div class="row">
+	  		<div class="column"><b>Competitor</b></div>
+	  		<div class="column"><b>Score</b></div>
+	  		<div class="column"><b>Time</b></div>
+	  	</div>
+	</div>
+	<mat-list role="list container">
+		<div *ngFor="let member of scorers">
+	  <mat-list-item role="listitem" *ngIf="member.points">
+		  	<div class="row">
+		  		<div class="column">{{member.name}}</div>
+		  		<div class="column">{{member.points}}</div>
+		  		<div class="column">{{member.time_taken}}</div>
+		  	</div>
+	  </mat-list-item>
+	</div>
+	</mat-list>
+</div>

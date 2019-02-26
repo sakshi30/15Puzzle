@@ -1,0 +1,15 @@
+<div class="bg_img"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+<div class="bg-text">
+	<br/>
+	<h1>Please enter your name to continue</h1>
+	<form>
+		<mat-form-field class="input_form">
+			<input matInput type="text" name="personname" [(ngModel)]="personname" placeholder="Enter your name" required="Please enter your name">
+		</mat-form-field>
+		<p *ngIf="errorStatus" style="color: red;">{{errorStatus}}</p> 
+		<br/>
+		<button mat-raised-button *ngIf="personname" (click)="letsPlay(personname)">Let's play, {{personname}}</button>
+		<button mat-raised-button *ngIf="!personname" [disabled]="!personname">Let's play</button>
+	</form>
+	<br/>
+</div>

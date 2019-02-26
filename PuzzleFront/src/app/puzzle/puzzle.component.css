@@ -1,0 +1,111 @@
+.grid {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.play-box {
+    clear: both;
+    height: 500px;
+    width: 500px;
+    margin: 10px auto 40px auto;
+    background-color: rgba(0, 119, 24, 0.29);
+    border-radius: 10px;
+}
+
+.bck{
+    background-color: black;
+}
+.tiles-container {
+    position: absolute;
+}
+.tile {
+    background-color: rgba(255, 255, 165, 1);
+    width: 125px;
+    height: 125px;
+    border-radius: 5px;
+    line-height: 105px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30pt;
+    cursor: pointer;
+    transition: all 0.2s ease-out 0s;
+    float: left;
+}
+
+.error{
+    color: red;
+    text-align: center;
+    margin-left: 400px;
+}
+
+#info-box {
+    float: left;
+    margin-top: 45px;
+    position: relative;
+    margin-bottom: 80px;
+}
+
+#scorepoint #timepoint {
+    width: 150px;
+    height: 90px;
+    border-radius: 5px;
+    background-color: rgba(158, 170, 255, 0.37);
+    float: left;
+    margin-right: 1px;
+}
+#buttonpoint {
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgba(158, 170, 255, 0.37);
+    float: left;
+    margin-right: 1px;
+}
+button{
+    display: block;
+    text-align: center;
+    padding-top: 7px;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.text {
+    display: block;
+    text-align: center;
+    padding-top: 7px;
+    font-weight: bold;
+    font-size: 16pt;
+}
+.num {
+    display: block;
+    text-align: center;
+    font-size: 15pt;
+}
+
+.tile:hover{
+    background-color: rgb(255, 255, 120);
+    width: 125px;
+    height: 125px;
+    border-radius: 5px;
+    line-height: 105px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30pt;
+    cursor: pointer;
+    transition: all 0.2s ease-out 0s;
+    float: left;
+}
+
+.tile:focus{
+    background-color: rgb(255, 255, 120);
+    width: 125px;
+    height: 125px;
+    border-radius: 5px;
+    line-height: 105px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30pt;
+    cursor: pointer;
+    transition: all 0.2s ease-out 0s;
+    float: left;
+}

@@ -1,0 +1,12 @@
+
+.bck{
+	background-color: black;
+}
+.header{
+	color: white;
+}
+
+.left_align{
+	position: absolute;
+	right: 20px;
+}

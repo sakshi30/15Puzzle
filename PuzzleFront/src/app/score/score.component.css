@@ -1,0 +1,26 @@
+.box{
+	clear: both;
+    height: 700px;
+    width: 500px;
+    margin:10px auto 40px auto; 
+    background-color: white;
+    border-radius: 10px;
+
+}
+.header{
+	text-align: center;
+}
+
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px 50px;
+  width: 33.33%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
