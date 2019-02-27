@@ -4,17 +4,30 @@
 <div class="container">
 	<br/>
 	<div id="info-box">
-		<div id="scorepoint">
+		<div id="scorepoint" *ngIf="!puzzlenumbers">
+			<span class="text">Moves</span>
+			<span class="num">0</span>
+		</div>
+		<div id="scorepoint" *ngIf="puzzlenumbers">
 			<span class="text">Moves</span>
 			<span class="num">{{moves}}</span>
 		</div>
 		<br/><br/>
-		<div id="timepoint">
+				<div id="timepoint" *ngIf="!puzzlenumbers">
+			<span class="text">Time</span>
+			<span class="num">00:00</span>
+		</div>
+		<div id="timepoint" *ngIf="puzzlenumbers">
 			<span class="text">Time</span>
 			<span class="num">{{time}}</span>
 		</div>
 	</div>
-	<table class="play-box">
+	<table class="play-box" *ngIf="!puzzlenumbers" >
+	<div class="grid">
+		<button mat-raised-button type="button" class="play_button" (click)="letsPlay()">Let's Play!</button>
+	</div>
+</table>
+	<table class="play-box" *ngIf="puzzlenumbers">
 	<div class="grid">
 		<div class="tiles-container">
 			<tr class="tile" *ngFor="let number of first" (click)="swapEntry(number)" tabindex="1">

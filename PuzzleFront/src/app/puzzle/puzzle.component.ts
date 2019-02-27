@@ -12,7 +12,7 @@ import { PlatformLocation } from '@angular/common';
 })
 export class PuzzleComponent implements OnInit {
 
-	puzzlenumbers = [];
+	puzzlenumbers = undefined;
 	first =[];
 	second = [];
 	third = [];
@@ -24,6 +24,7 @@ export class PuzzleComponent implements OnInit {
 	time: String;
 	moves: any;
 	errMess: String;
+  number: any = 0;
 
   constructor(private el: ElementRef, private router: Router, private datatransfer: DataTransferService, private location: PlatformLocation) { 
      location.onPopState(() => {
@@ -31,27 +32,75 @@ export class PuzzleComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  	this.puzzlenumbers = [' ', '6', '8', '3', '1', '5', '2', '10', '9', '12', '4', '15', '14', '13', '11', '7'];
-	this.first = this.puzzlenumbers.slice(0,4);
-	this.second = this.puzzlenumbers.slice(4, 8);
-	this.third = this.puzzlenumbers.slice(8, 12);
-	this.fourth = this.puzzlenumbers.slice(12, 16);
-	this.moves = Math.floor(Math.random()*(80-43+1)+43);
-	this.interval = setInterval(() => {
-		this.timer ++;
-		this.hours = Math.floor(this.timer/60);
-		this.minutes = (this.timer%60);
-		if(this.hours < 10){
-			var temp = '0';
-			this.hours = temp+this.hours;
-		}
-		if(this.minutes < 10){
-			var temp = '0';
-			this.minutes = temp+this.minutes ;
-		}
-		this.time = this.hours+":"+this.minutes;
-	}, 1000);
+  ngOnInit() {}
+  letsPlay(){
+     this.puzzlenumbers = this.createPuzzle();
+     console.log(this.puzzlenumbers);
+     this.first = this.puzzlenumbers.slice(0,4);
+      this.second = this.puzzlenumbers.slice(4, 8);
+      this.third = this.puzzlenumbers.slice(8, 12);
+      this.fourth = this.puzzlenumbers.slice(12, 16);
+      this.moves = Math.floor(Math.random()*(80-43+1)+43);
+      this.interval = setInterval(() => {
+        this.timer ++;
+        this.hours = Math.floor(this.timer/60);
+        this.minutes = (this.timer%60);
+        if(this.hours < 10){
+          var temp = '0';
+          this.hours = temp+this.hours;
+        }
+        if(this.minutes < 10){
+          var temp = '0';
+          this.minutes = temp+this.minutes ;
+        }
+        this.time = this.hours+":"+this.minutes;
+      }, 1000);
+    
+  }
+
+  createPuzzle(){
+      var flag =  true;
+      var arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', ' '];
+      var temp_arr = [];
+      while(temp_arr.length != 16){
+        var index = Math.floor(Math.random()*(arr.length)+0);
+        this.number = arr[index];
+        temp_arr.push(this.number);
+        arr.splice(index, 1);
+      }
+      flag = this.isSolvable(temp_arr);
+      if(flag){
+        return temp_arr;
+      }
+      else{
+        console.log("Not solvable");
+        return this.createPuzzle();
+      }
+    
+  }
+
+  isSolvable(arr){
+    var count = 0;
+    var index;
+    for(var i=0; i< 16; i++){
+      for(var j=i+1; j<16; j++){
+        if(arr[j] && arr[i] && arr[i] > arr[j]){
+          count += 1;
+        }
+        if(arr[i] === ' '){
+          var index = i;
+        }
+      }
+    }
+    if(index%2 == 0 && count%2 !=0){
+      return true;
+    }
+    else if(index%2 != 0 && count%2 == 0){
+      return true;
+    }
+    else{
+      return false;
+    }
 
   }
 
@@ -105,6 +154,7 @@ export class PuzzleComponent implements OnInit {
   	else{
   		this.datatransfer.calculateScore(this.moves, this.puzzlenumbers, this.time)
   		.subscribe((response)=>{
+        console.log(response);
 	      this.datatransfer.getDetailsOfLoggedIn(response, this.time);
 	    },(error)=>{
 	    });

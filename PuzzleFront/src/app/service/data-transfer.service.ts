@@ -39,6 +39,7 @@ export class DataTransferService {
          if(puzzlenumbers[-1] === undefined){
             this.score += 10;
          }
+         console.log("Score", this.score);
          return this.http.put<any>(baseURL+'users', {"name": JSON.parse(obj).username, "points": this.score, "time_taken": time}, httpOptions)
          .pipe( map(res => {
            return {"name": res.name, "points": res.points, "time":time};
@@ -47,10 +48,11 @@ export class DataTransferService {
   }
 
 
-  getDetailsOfLoggedIn(response: any, time_taken){
+  getDetailsOfLoggedIn(response, time_taken){
     localStorage.setItem("name", response.name);
     localStorage.setItem("points", response.points);
     localStorage.setItem("time_taken", time_taken);
+    console.log(localStorage);
   }
 
    sendDetails(): any{
@@ -63,7 +65,11 @@ export class DataTransferService {
 
  
   storeUserCredentials(credentials: any) {
+     localStorage.removeItem("name");
+    localStorage.removeItem("points");
+      localStorage.removeItem("time_taken");
      localStorage.setItem(this.tokenKey, JSON.stringify(credentials));
+     console.log(localStorage);
      this.useCredentials(credentials);
    }
 
