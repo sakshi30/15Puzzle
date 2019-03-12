@@ -88,7 +88,7 @@ export class PuzzleComponent implements OnInit {
           count += 1;
         }
         if(arr[i] === ' '){
-          var index = i;
+          index = i;
         }
       }
     }
